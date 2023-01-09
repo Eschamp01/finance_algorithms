@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stock Algos Home</title>
+  <meta name="description" content="Stock algorithms homepage">
+  <meta name="author" content="Edward">
+  <!-- <link rel="stylesheet" href="/css/style.css"> -->
+</head>
+<body>
+  <header>
+    <h1>Strategies Viewer Page</h1>
+    <h3>Features to implement:</h3>
+    
+  </header>
+  <main>
+    <ol>
+        <li>More in-depth stock chart for single stock, start with Apple (AAPL)</li>
+        <li>Apply a strategy of choide (select from a dropdown menu) to the stock</li>
+        <li>Allow two stocks to be shown on the same chart (with bias removed and variance normalised?)</li>
+        <li>Peform pairs trading on these two stocks, then expand to other algorithms</li>
+    </ol>
+    <!-- {% block content %}
+    {% endblock %} -->
+    <h2>Chart Experimentation in Progress Below :D</h2>
+
+    <div style="width: 800px;">
+      <canvas id="stockchart"></canvas>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+      const ctx = document.getElementById('stockchart');
+
+      (async function() {
+        const data = 
+        [
+          { year: 2010, close: 17.2 },
+          { year: 2011, close: 20.4 },
+          { year: 2012, close: 15.3 },
+          { year: 2013, close: 25.1 },
+          { year: 2014, close: 22.8 },
+          { year: 2015, close: 17.2 },
+          { year: 2016, close: 20.4 },
+          { year: 2017, close: 15.3 },
+          { year: 2018, close: 25.1 },
+          { year: 2019, close: 22.8 },
+          { year: 2020, close: 17.2 },
+          { year: 2021, close: 20.4 },
+          { year: 2022, close: 15.3 },
+        ];
+
+        new Chart(
+          ctx,
+          {
+            type: 'line',
+            data: {
+              labels: data.map(row => row.year),
+              datasets: [
+                {
+                  label: 'Closing price ($)',
+                  data: data.map(row => row.close)
+                }
+              ]
+            }
+          }
+        );
+      })();
+    </script>
+
+    <ul>
+      <li><a href="..">Stock Algo Site Homepage</a></li>
+      <li><a href="./chart">Chart Viewer Page</a></li>
+    </ul>
+    
+  </main>
+  <!-- <footer>
+    <p>Copyright {{ year }}</p>
+  </footer> -->
+</body>
+</html>
