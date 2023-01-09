@@ -5,6 +5,7 @@
   <title>Stock Algos Home</title>
   <meta name="description" content="Stock algorithms homepage">
   <meta name="author" content="Edward">
+  <link rel="shortcut icon" href="#" />
   <!-- <link rel="stylesheet" href="/css/style.css"> -->
 </head>
 <body>
@@ -15,16 +16,16 @@
   </header>
   <main>
     <ol>
-        <li>More in-depth stock chart for single stock, start with Apple (AAPL)</li>
-        <li>Apply a strategy of choide (select from a dropdown menu) to the stock</li>
-        <li>Allow two stocks to be shown on the same chart (with bias removed and variance normalised?)</li>
-        <li>Peform pairs trading on these two stocks, then expand to other algorithms</li>
+      <li>Add options to view </li>
+      <li>More in-depth stock chart for single stock, start with Apple (AAPL)</li>
+      <li>Apply a strategy of choide (select from a dropdown menu) to the stock</li>
+      <li>Allow two stocks to be shown on the same chart (with bias removed and variance normalised?)</li>
+      <li>Peform pairs trading on these two stocks, then expand to other algorithms</li>
     </ol>
-    <!-- {% block content %}
-    {% endblock %} -->
+
     <h2>Chart Experimentation in Progress Below :D</h2>
 
-    <div style="width: 800px;">
+    <div style="width: 600px;">
       <canvas id="stockchart"></canvas>
     </div>
     
@@ -33,40 +34,9 @@
     <script>
       const ctx = document.getElementById('stockchart');
 
-      // const data = 
-      //   [
-      //     { year: 2010, close: 17.2 },
-      //     { year: 2011, close: 20.4 },
-      //     { year: 2012, close: 15.3 },
-      //     { year: 2013, close: 25.1 },
-      //     { year: 2014, close: 22.8 },
-      //     { year: 2015, close: 17.2 },
-      //     { year: 2016, close: 20.4 },
-      //     { year: 2017, close: 15.3 },
-      //     { year: 2018, close: 25.1 },
-      //     { year: 2019, close: 22.8 },
-      //     { year: 2020, close: 17.2 },
-      //     { year: 2021, close: 20.4 },
-      //     { year: 2022, close: 15.3 },
-      //   ];
-
-      var time= "{{time|safe}}";
-      var y_axis = "{{y_axis|safe}}";
-
-      for (i=0;i<10;i++){
-        console.log("time[0]: " + time[0] + ", ");
-      }
-
-      for (i=0;i<10;i++){
-        console.log("close[0]: " + y_axis[0] + ", ");
-      }
-        
-      // console.log("Time: " + time);
-      // console.log("Y_axis: " + y_axis);
-
-      // var list = [y_axis[0], y_axis[1]];
-      // console.log(y_axis[2]);
-      
+      var time = {{ time|safe }};
+      var y_axis = {{ y_axis|safe }};
+      var ticker = "{{ ticker | safe }}";
 
       (async function() {
 
@@ -74,26 +44,48 @@
           ctx,
           {
             type: 'line',
+            options: {
+              animation: false,
+              elements: {
+                point:{
+                    radius: 0
+                  },
+                },
+              plugins: {
+                title: {
+                  display: true,
+                  text: ticker + ' Stock Chart'
+                },
+                legend: {
+                  display: false
+                },
+                tooltip: {
+                  //enabled: false
+                }
+              }
+            },
             data: {
-              labels: ["2021-12-01", "2021-12-02", "2021-12-03", "2021-12-04","2021-12-05", "2021-12-06", "2021-12-07", "2021-12-08"],//{{ time|safe }},
+              labels: time,
               datasets: [
                 {
                   label: 'Closing price ($)',
-                  data: [157.4, 148.2, 149.3, 155.7,158.8, 155.2, 151.3, 152.7],//{{close|safe}}
+                  data: y_axis,
+                  borderColor: '#FF6384',
+                  borderWidth: 2,
                 }
               ]
             }
           }
         );
       })();
-      // console.log(`${time}`)
     </script>
 
-    <h2>Debugging</h2>
-    <h3>Time data: </h3>
-    <p>{{ time }}</p>
-    <h3>Closing price data: </h3>
-    <p>{{ y_axis }}</p>
+    <h2>Debugging Space</h2>
+    <ul>
+      <li>Add debugging variable here</li>
+    </ul>
+
+    <h2>Other page links</h2>
 
     <ul>
       <li><a href="..">Stock Algo Site Homepage</a></li>

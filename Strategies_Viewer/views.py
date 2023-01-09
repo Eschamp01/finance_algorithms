@@ -26,10 +26,10 @@ def chart_view(request):
     stocks = StockData.objects.all().values()
     df = pd.DataFrame(stocks)
     time = df.date.tolist()
+    time_isoformat = [date.isoformat() for date in time]
     close = df.close.tolist()
-    # time = [1,2,3,4]
-    # close = [2,1,2,1]
-    output_data = {'time' : time, 'y_axis' : close}
+    ticker = df.symbol.tolist()[0]
+    output_data = {'time' : time_isoformat, 'y_axis' : close, 'ticker' : ticker}
     return render(request, 'Strategies_Viewer/chart.html', output_data)
 
 
