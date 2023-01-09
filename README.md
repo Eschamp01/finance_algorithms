@@ -1,9 +1,12 @@
-The current scope for this project is to create the frontend and backend code to be able to:
+ ## <div align="center"> :moneybag: Welcome to the Financial Algorithms Project :moneybag: </div>
+</br>
+
+#### The current scope for this project is to create the frontend and backend code to be able to:
 1. Test a given trading algorithm on past stock data, and observe its performance
 2. Apply the trading algorithm to real-time stock data, making it an active strategy in a portfolio
+</br>
 
-In order to do this, the following steps need to be taken:
-
+#### In order to do this, the following steps need to be taken:
 1. Backend code for the trading algorithms needs to be implemented.
 2. A Frontend interface is needed where the user can:
     (a) Input/adjust algorithm parameters.
@@ -13,6 +16,7 @@ In order to do this, the following steps need to be taken:
 3. Backend for connecting to real-time asset (stock/currency) price changes, and processing them.
 4. Backend for connecting to a user's portfolio to track and change the user's current buy and sell positions in different assets.
 5. Frontend to allow the user to specify the strategies that they wish to execute in their profile, and any positions they wish to enter/exit.
+</br>
 
 In total, two main frontend user interfaces are needed, with a homepage to display general information and navigate between the functionalities. 
 Backend code is needed to:
