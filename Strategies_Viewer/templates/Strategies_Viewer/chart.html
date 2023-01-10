@@ -1,20 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
+  {% load static %}
   <meta charset="utf-8">
   <title>Stock Algos Home</title>
   <meta name="description" content="Stock algorithms homepage">
   <meta name="author" content="Edward">
   <link rel="shortcut icon" href="#" />
-  <!-- <link rel="stylesheet" href="/css/style.css"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'Stock_Algos/css/style.css' %}">
 </head>
 <body>
   <header>
-    <h1>Strategies Viewer Page</h1>
-    <h3>Features to implement:</h3>
-    
+    <ul id='navbar'>
+      <li class='navitem'><a href="..">Home</a></li>
+      <li class='navitem'><a href="./">Strategies</a></li>
+    </ul>
   </header>
   <main>
+    <h1>Chart Viewer</h1>
+    <h3>Features to implement:</h3>
+
     <ol>
       <li>Add options to view </li>
       <li>More in-depth stock chart for single stock, start with Apple (AAPL)</li>
@@ -30,67 +35,12 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
     <script>
-      const ctx = document.getElementById('stockchart');
-
       var time = {{ time|safe }};
       var y_axis = {{ y_axis|safe }};
       var ticker = "{{ ticker | safe }}";
-
-      (async function() {
-
-        new Chart(
-          ctx,
-          {
-            type: 'line',
-            options: {
-              animation: false,
-              elements: {
-                point:{
-                    radius: 0
-                  },
-                },
-              plugins: {
-                title: {
-                  display: true,
-                  text: ticker + ' Stock Chart'
-                },
-                legend: {
-                  display: false
-                },
-                tooltip: {
-                  //enabled: false
-                }
-              }
-            },
-            data: {
-              labels: time,
-              datasets: [
-                {
-                  label: 'Closing price ($)',
-                  data: y_axis,
-                  borderColor: '#FF6384',
-                  borderWidth: 2,
-                }
-              ]
-            }
-          }
-        );
-      })();
     </script>
-
-    <h2>Debugging Space</h2>
-    <ul>
-      <li>Add debugging variable here</li>
-    </ul>
-
-    <h2>Other page links</h2>
-
-    <ul>
-      <li><a href="..">Stock Algo Site Homepage</a></li>
-      <li><a href="./">Stock Strategies Section Homepage</a></li>
-    </ul>
+    <script src="{% static 'Stock_Algos/js/chart.js' %}"></script>
     
   </main>
   <!-- <footer>
