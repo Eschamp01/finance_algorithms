@@ -1,32 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-  {% load static %}
-  <meta charset="utf-8">
-  <title>Stock Algos Home</title>
-  <meta name="description" content="Stock algorithms homepage">
-  <meta name="author" content="Edward">
-  <link rel="stylesheet" type="text/css" href="{% static 'Stock_Algos/css/style.css' %}">
-</head>
-<body>
-  <header>
-    <ul id='navbar'>
-      <li class='navitem'><a href="./stocks">Strategies</a></li>
-      <li class='navitem'><a href="./stocks/chart">Chart View</a></li>
-    </ul>
-  </header>
-  <main>
-    <h1>Stock Algos Site Homepage</h1>
-    <h3>Features to implement:</h3>
+{% extends 'Strategies_Viewer/template.html' %}
 
-    <ol>
-        <li>Create nice top menu bar with links to pages across it</li>
-        <li>Create list to display stocks that are compatible</li>
-        <li>Create an interface to display strategies that are compatible</li>
-    </ol>
-  </main>
-  <!-- <footer>
-    <p>Copyright {{ year }}</p>
-  </footer> -->
-</body>
-</html>
+{% block content %}
+
+<h1>Stock Algos Site Homepage</h1>
+<h3>Features to implement:</h3>
+
+<ol>
+    <li>Create nice top menu bar with links to pages across it</li>
+    <li>Create list to display stocks that are compatible</li>
+    <li>Create an interface to display strategies that are compatible</li>
+</ol>
+
+{% endblock %}

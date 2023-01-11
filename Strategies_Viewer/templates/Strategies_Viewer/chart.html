@@ -1,50 +1,48 @@
-<!doctype html>
-<html lang="en">
-<head>
-  {% load static %}
-  <meta charset="utf-8">
-  <title>Stock Algos Home</title>
-  <meta name="description" content="Stock algorithms homepage">
-  <meta name="author" content="Edward">
-  <link rel="shortcut icon" href="#" />
-  <link rel="stylesheet" type="text/css" href="{% static 'Stock_Algos/css/style.css' %}">
-</head>
-<body>
-  <header>
-    <ul id='navbar'>
-      <li class='navitem'><a href="..">Home</a></li>
-      <li class='navitem'><a href="./">Strategies</a></li>
-    </ul>
-  </header>
-  <main>
-    <h1>Chart Viewer</h1>
-    <h3>Features to implement:</h3>
+{% extends 'Strategies_Viewer/template.html' %}
 
-    <ol>
-      <li>Add options to view </li>
-      <li>More in-depth stock chart for single stock, start with Apple (AAPL)</li>
-      <li>Apply a strategy of choide (select from a dropdown menu) to the stock</li>
-      <li>Allow two stocks to be shown on the same chart (with bias removed and variance normalised?)</li>
-      <li>Peform pairs trading on these two stocks, then expand to other algorithms</li>
-    </ol>
+{% block content %}
 
-    <h2>Chart Experimentation in Progress Below :D</h2>
+{% load static %}
 
-    <div style="width: 600px;">
-      <canvas id="stockchart"></canvas>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-      var time = {{ time|safe }};
-      var y_axis = {{ y_axis|safe }};
-      var ticker = "{{ ticker | safe }}";
-    </script>
-    <script src="{% static 'Stock_Algos/js/chart.js' %}"></script>
-    
-  </main>
-  <!-- <footer>
-    <p>Copyright {{ year }}</p>
-  </footer> -->
-</body>
-</html>
+<h1>Chart Viewer</h1>
+<h3>Features to implement:</h3>
+
+<ol>
+  <li>Add options to view </li>
+  <li>More in-depth stock chart for single stock, start with Apple (AAPL)</li>
+  <li>Apply a strategy of choide (select from a dropdown menu) to the stock</li>
+  <li>Allow two stocks to be shown on the same chart (with bias removed and variance normalised?)</li>
+  <li>Peform pairs trading on these two stocks, then expand to other algorithms</li>
+</ol>
+
+<h2>Chart Experimentation Below</h2>
+
+<div>
+  <canvas id="stockchart" class="w-75 h-75"></canvas>
+</div>
+<div style="height: 20px"></div>
+<div class="input-group mb-3 w-75">
+  <input type="text" class="form-control" placeholder="Select Model" aria-label="Text input with dropdown button">
+  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Model List</button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><a class="dropdown-item" href="#">Moving Average</a></li>
+    <li><a class="dropdown-item" href="#">Mean Reversion</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Pairs Trading</a></li>
+  </ul>
+</div>
+<div class="input-group mb-3 w-75">
+  <input type="text" class="form-control" placeholder="Specify Model Values" aria-label="Text input with dropdown button">
+  </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  var time = {{ time|safe }};
+  var y_axis = {{ y_axis|safe }};
+  var ticker = "{{ ticker | safe }}";
+</script>
+<script src="{% static 'Stock_Algos/js/chart.js' %}"></script>
+
+{% endblock %}
+

@@ -1,36 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-  {% load static %}
-  <meta charset="utf-8">
-  <title>Stock Algos Home</title>
-  <meta name="description" content="Stock algorithms homepage">
-  <meta name="author" content="Edward">
-  <link rel="stylesheet" type="text/css" href="{% static 'Stock_Algos/css/style.css' %}">
-</head>
-<body>
-  <header>
-    <ul id='navbar'>
-      <li class='navitem'><a href="..">Home</a></li>
-      <li class='navitem'><a href="./chart">Chart Viewer</a></li>
-    </ul>
-  </header>
-  <main>
-    <h1>Strategies Viewer Page</h1>
-    <h3>Features to implement:</h3>
+{% extends 'Strategies_Viewer/template.html' %}
 
-    <ol>
-        <li>More in-depth stock chart for single stock, start with Apple (AAPL)</li>
-        <li>Apply a strategy of choide (select from a dropdown menu) to the stock</li>
-        <li>Allow two stocks to be shown on the same chart (with bias removed and variance normalised?)</li>
-        <li>Peform pairs trading on these two stocks, then expand to other algorithms</li>
-    </ol>
-    {% block content %}
-    {% endblock %}
+{% block content %}
+<h1>Algorithms Homepage</h1>
+<h3>Features to implement:</h3>
 
-  </main>
-  <!-- <footer>
-    <p>Copyright {{ year }}</p>
-  </footer> -->
-</body>
-</html>
+<ol>
+    <li>More in-depth stock chart for single stock, start with Apple (AAPL)</li>
+    <li>Apply a strategy of choide (select from a dropdown menu) to the stock</li>
+    <li>Allow two stocks to be shown on the same chart (with bias removed and variance normalised?)</li>
+    <li>Peform pairs trading on these two stocks, then expand to other algorithms</li>
+</ol>
+
+{% endblock %}
