@@ -1,14 +1,15 @@
 {% extends 'Strategies_Viewer/template.html' %}
 
+{% block title %} Algorithms {% endblock %}
+
 {% block content %}
-<h1>Algorithms Homepage</h1>
-<h3>Features to implement:</h3>
+<h1 class="text-center">Algorithms Homepage</h1>
 
-<ol>
-    <li>More in-depth stock chart for single stock, start with Apple (AAPL)</li>
-    <li>Apply a strategy of choide (select from a dropdown menu) to the stock</li>
-    <li>Allow two stocks to be shown on the same chart (with bias removed and variance normalised?)</li>
-    <li>Peform pairs trading on these two stocks, then expand to other algorithms</li>
-</ol>
 
+
+
+{% endblock %}
+
+{% block to-do %}
+<li>Show previous analysis sessions, with delete option</li>
 {% endblock %}

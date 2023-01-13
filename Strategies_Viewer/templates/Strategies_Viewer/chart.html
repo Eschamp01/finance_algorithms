@@ -1,40 +1,60 @@
 {% extends 'Strategies_Viewer/template.html' %}
 
+{% block title %} Chart Viewer {% endblock %}
+
 {% block content %}
 
 {% load static %}
 
-<h1>Chart Viewer</h1>
-<h3>Features to implement:</h3>
+<h1 class="text-center">Chart Viewer</h1>
 
-<ol>
-  <li>Add options to view </li>
-  <li>More in-depth stock chart for single stock, start with Apple (AAPL)</li>
-  <li>Apply a strategy of choide (select from a dropdown menu) to the stock</li>
-  <li>Allow two stocks to be shown on the same chart (with bias removed and variance normalised?)</li>
-  <li>Peform pairs trading on these two stocks, then expand to other algorithms</li>
-</ol>
-
-<h2>Chart Experimentation Below</h2>
+<h2 class="text-center"> Stock Analysis Chart</h2>
 
 <div>
-  <canvas id="stockchart" class="w-75 h-75"></canvas>
+  <canvas id="stockchart"></canvas>
 </div>
+
 <div style="height: 20px"></div>
-<div class="input-group mb-3 w-75">
+
+<h5 class="text-center">Input Data Parameters</h5>
+            
+<div class="form-group row text-center">
+    <div class="col-6">
+        <label for="stock_selector">Select Stock</label>
+        <select class="form-select" id="stock_selector" aria-label="Default select example">
+            <option selected>Apple (AAPL)</option>
+            <option value="2">Microsoft (MSFT)</option>
+            <option value="3">IBM (IBM)</option>
+        </select>
+    </div>
+
+    <div class="md-form md-outline col-3 input-with-post-icon datepicker">
+        <label for="start-date">Start Date</label>
+        <input placeholder="Select date" type="date" id="start-date" class="form-control">
+    </div>
+
+    <div class="md-form md-outline col-3 input-with-post-icon datepicker">
+        <label for="end-date">End Date</label>
+        <input placeholder="Select date" type="date" id="end-date" class="form-control">
+    </div>
+</div>
+
+<div style="height: 20px"></div>
+
+<h5 class="text-center">Select Model</h5>
+
+<div class="input-group mb-3">
   <input type="text" class="form-control" placeholder="Select Model" aria-label="Text input with dropdown button">
   <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Model List</button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><a class="dropdown-item" href="#">Moving Average</a></li>
-    <li><a class="dropdown-item" href="#">Mean Reversion</a></li>
+    <li><a class="dropdown-item" id="moving-average-button">Moving Average</a></li>
+    <li><a class="dropdown-item" id="mean-reversion-button">Mean Reversion</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">Pairs Trading</a></li>
+    <li><a class="dropdown-item" id="pairs-trading-button">Pairs Trading</a></li>
   </ul>
 </div>
-<div class="input-group mb-3 w-75">
-  <input type="text" class="form-control" placeholder="Specify Model Values" aria-label="Text input with dropdown button">
-  </ul>
-</div>
+
+<div id="paramsContainer"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -43,6 +63,13 @@
   var ticker = "{{ ticker | safe }}";
 </script>
 <script src="{% static 'Stock_Algos/js/chart.js' %}"></script>
+<script src="{% static 'Stock_Algos/js/model_frontend.js' %}"></script>
 
+{% endblock %}
+
+{% block to-do %}
+<li>Add option to view multiple metrics (model params and profit/loss), and buy/sell points</li>
+<li>More chart metrics, e.g. returns, log(price) etc - progressively add these</li>
+<li>Allow two stocks to be shown on the same chart. Start with pairs trading for 2 stock algos</li>
 {% endblock %}
 

@@ -3,9 +3,13 @@
 <head>
   {% load static %}
   <meta charset="utf-8">
-  <title>Stock Algos Home</title>
+  <title>
+    {% block title %}
+    {% endblock %}
+  </title>
   <meta name="description" content="Stock algorithms homepage">
   <meta name="author" content="Edward">
+  <link rel="shortcut icon" type="image/png" href="{% static 'general/finance_icon.ico' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'Stock_Algos/css/style.css' %}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" \
    rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -31,7 +35,7 @@
             </li>
             <!-- extra elements, and a dropdown element example if needed -->
             <li class="nav-item">
-              <a class="nav-link" href="/stocks/chart">Chart Analyser</a>
+              <a class="nav-link" href="/stocks/chart">Chart Viewer</a>
             </li>
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,6 +58,14 @@
       {% block content %}
 
       {% endblock %}
+      <div style="height:30px"></div>
+      <div class="border border-warning border-3 w-75 mx-auto rounded-3 p-2">
+        <h3 class = "text-center">Features to implement</h3>
+        <ol>
+          {% block to-do %}
+          {% endblock %}
+        </ol>
+      </div>
     </div>
   </main>
   <!-- <footer>

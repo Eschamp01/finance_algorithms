@@ -1,14 +1,12 @@
 {% extends 'Strategies_Viewer/template.html' %}
 
+{% block title %} Homepage {% endblock %}
+
 {% block content %}
+<h1 class="text-center">Stock Algos Site Homepage</h1>
+{% endblock %}
 
-<h1>Stock Algos Site Homepage</h1>
-<h3>Features to implement:</h3>
-
-<ol>
-    <li>Create nice top menu bar with links to pages across it</li>
-    <li>Create list to display stocks that are compatible</li>
-    <li>Create an interface to display strategies that are compatible</li>
-</ol>
-
+{% block to-do %}
+<li>Display available stocks (maybe categorize into market sector?)</li>
+<li>Display and explain supported trading algorithms</li>
 {% endblock %}
