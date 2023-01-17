@@ -10,7 +10,9 @@
 
 <h2 class="text-center"> Stock Analysis Chart</h2>
 
-<div>
+<link rel="stylesheet" type="text/css" href="{% static 'Stock_Algos/css/style.css' %}">
+
+<div class="chart-container" style="position: relative; margin: auto; height: 40vh; width: 60vw; margin: auto;">
   <canvas id="stockchart"></canvas>
 </div>
 
@@ -18,39 +20,47 @@
 
 <h5 class="text-center">Input Data Parameters</h5>
             
-<div class="form-group row text-center">
-    <div class="col-6">
+<div class="form-group row text-center justify-content-center pb-3">
+    <div class="col-3">
         <label for="stock_selector">Select Stock</label>
-        <select class="form-select" id="stock_selector" aria-label="Default select example">
+        <select class="form-select text-center" id="stock_selector" aria-label="Default select example">
             <option selected>Apple (AAPL)</option>
             <option value="2">Microsoft (MSFT)</option>
             <option value="3">IBM (IBM)</option>
         </select>
     </div>
 
-    <div class="md-form md-outline col-3 input-with-post-icon datepicker">
+    <div class="md-form md-outline col-3 input-with-post-icon datepicker text-center">
         <label for="start-date">Start Date</label>
         <input placeholder="Select date" type="date" id="start-date" class="form-control">
     </div>
 
-    <div class="md-form md-outline col-3 input-with-post-icon datepicker">
+    <div class="md-form md-outline col-3 input-with-post-icon datepicker text-center">
         <label for="end-date">End Date</label>
         <input placeholder="Select date" type="date" id="end-date" class="form-control">
     </div>
 </div>
 
-<div style="height: 20px"></div>
-
 <h5 class="text-center">Select Model</h5>
 
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Select Model" aria-label="Text input with dropdown button">
-  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Model List</button>
-  <ul class="dropdown-menu dropdown-menu-end">
-    <li><a class="dropdown-item" id="moving-average-button">Moving Average</a></li>
-    <li><a class="dropdown-item" id="mean-reversion-button">Mean Reversion</a></li>
+{% comment %} <div class="form-group row text-center justify-content-center pb-3">
+  <div class="col-5">
+      <select class="form-select text-center" id="stock_selector" aria-label="Default select example">
+          <option selected>Choose Model...</option>
+          <option class="model_type" value="1">Moving Average</option>
+          <option class="model_type" value="2">Mean Reversion</option>
+          <option class="model_type" value="3">Pairs Trading</option>
+      </select>
+  </div>
+</div> {% endcomment %}
+
+<div class="input-group mb-3 text-center justify-content-center pt-1 pb-1">
+  <button class="btn btn-outline-secondary dropdown-toggle col-5" type="button" data-bs-toggle="dropdown" id="model_selected" aria-expanded="false">Model List</button>
+  <ul class="dropdown-menu dropdown-menu-end col-5 text-center" id="model_dropdown">
+    <li><a class="dropdown-item" id="moving-average-button" href="JavaScript:handleModel('moving_average')">Moving Average</a></li>
+    <li><a class="dropdown-item" id="mean-reversion-button" href="JavaScript:handleModel('mean_reversion')">Mean Reversion</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" id="pairs-trading-button">Pairs Trading</a></li>
+    <li><a class="dropdown-item" id="pairs-trading-button" href="JavaScript:handleModel('pairs_trading')">Pairs Trading</a></li>
   </ul>
 </div>
 

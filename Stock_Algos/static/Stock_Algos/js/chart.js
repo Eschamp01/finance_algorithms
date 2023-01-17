@@ -7,6 +7,7 @@ const ctx = document.getElementById('stockchart');
         {
         type: 'line',
         options: {
+            responsive: true,
             animation: false,
             elements: {
             point:{
@@ -34,6 +35,7 @@ const ctx = document.getElementById('stockchart');
                 data: y_axis,
                 borderColor: '#FF6384',
                 borderWidth: 2,
+                pointHitRadius: 7,
             }
             ]
         }
